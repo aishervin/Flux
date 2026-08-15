@@ -446,14 +446,150 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      body { padding: 12px; }
-      .logo { font-size: 2rem; }
-      .card { padding: 18px; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr 1fr; }
-      .btn-full { width: 100%; }
-      .btn-group { flex-direction: column; }
-      .btn { width: 100%; }
+      body { 
+        padding: 12px; 
+        font-size: 14px;
+      }
+      .container {
+        max-width: 100%;
+      }
+      .logo { 
+        font-size: 1.8rem; 
+        letter-spacing: 1px;
+      }
+      .subtitle {
+        font-size: 0.85rem;
+      }
+      .card { 
+        padding: 16px; 
+        border-radius: 16px;
+      }
+      .card-title {
+        font-size: 1rem;
+      }
+      .tabs {
+        gap: 8px;
+        padding-bottom: 8px;
+      }
+      .tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+      .grid-2 { 
+        grid-template-columns: 1fr; 
+        gap: 12px;
+      }
+      .grid-3 { 
+        grid-template-columns: 1fr; 
+        gap: 12px;
+      }
+      .btn-full { 
+        width: 100%; 
+        padding: 12px 20px;
+      }
+      .btn-group { 
+        flex-direction: column; 
+        gap: 8px;
+      }
+      .btn { 
+        width: 100%; 
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+      .btn-enhance {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+      textarea, input[type="text"], input[type="number"], select {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+      }
+      .input-label {
+        font-size: 0.8rem;
+      }
+      .result-area {
+        min-height: 250px;
+        padding: 16px;
+      }
+      .result-area img, .result-area video {
+        max-height: 400px;
+      }
+      .file-upload {
+        padding: 20px;
+      }
+      .chips {
+        gap: 6px;
+      }
+      .chip {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .toast {
+        padding: 12px 18px;
+        font-size: 0.85rem;
+      }
+      .enhanced-box {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body { 
+        padding: 8px; 
+        font-size: 13px;
+      }
+      .logo { 
+        font-size: 1.5rem; 
+      }
+      .header {
+        margin-bottom: 20px;
+      }
+      .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+      .card {
+        padding: 14px;
+        margin-bottom: 16px;
+      }
+      .card-title {
+        font-size: 0.95rem;
+        gap: 8px;
+      }
+      .card-title .icon {
+        font-size: 1.2rem;
+      }
+      .input-group {
+        margin-bottom: 12px;
+      }
+      textarea {
+        min-height: 80px;
+      }
+      .result-area {
+        min-height: 200px;
+        padding: 12px;
+      }
+      .btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+      .btn-download {
+        top: 8px;
+        left: 8px;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+      .footer {
+        margin-top: 30px;
+        padding: 16px;
+        font-size: 0.8rem;
+      }
     }
 
     /* Chip Select */
@@ -734,7 +870,20 @@
 
   <script>
     // ========== Config ==========
-    const WORKER_URL = ""; // URL Worker خود را اینجا وارد کنید (مثلاً: https://your-worker.workers.dev)
+    // ЩҲШ¶Ш№ЫҢШӘ Ш§ШӘШөШ§Щ„ Щ…ШіШӘЩӮЫҢЩ… ШЁЩҮ APIвҖҢЩҮШ§ЫҢ Ш®Ш§ШұШ¬ЫҢ (ШЁШҜЩҲЩҶ ЩҶЫҢШ§ШІ ШЁЩҮ Worker)
+    const DIRECT_API = true;
+    
+    // вҡ ïёҸ ЩҮШҙШҜШ§Шұ: Ш§ЫҢЩҶ Ъ©Щ„ЫҢШҜЩҮШ§ ШЁШ§ЫҢШҜ Ш§ШІ Ш·ШұЫҢЩӮ environment variables Щ…ШҜЫҢШұЫҢШӘ ШҙЩҲЩҶШҜ
+    // ШЁШұШ§ЫҢ ШҜШұЫҢШ§ЩҒШӘ Ъ©Щ„ЫҢШҜЩҮШ§:
+    // FAL.AI: https://fal.ai/dashboard/keys
+    // Mistral: https://console.mistral.ai/api-keys/
+    
+    // ШӘЩҲШ¬ЩҮ: Ъ©Щ„ЫҢШҜЩҮШ§ЫҢ Ш®ЩҲШҜ ШұШ§ Ш§ЫҢЩҶШ¬Ш§ ЩҲШ§ШұШҜ Ъ©ЩҶЫҢШҜ
+    const FAL_KEY = "fal_your_api_key_here"; // Ъ©Щ„ЫҢШҜ FAL.AI Ш®ЩҲШҜ ШұШ§ Ш§ЫҢЩҶШ¬Ш§ ЩҲШ§ШұШҜ Ъ©ЩҶЫҢШҜ
+    const MISTRAL_KEY = "your_mistral_key_here"; // Ъ©Щ„ЫҢШҜ Mistral AI ШұШ§ Ш§ЫҢЩҶШ¬Ш§ ЩҲШ§ШұШґ ШӯШұЪҝ Ъ©ЩҶЫҢШҜ
+    
+    // Ш§ЪҜШұ Worker ШҜШ§ШұЫҢШҜШҢ URL В» ЩҶШ¬Ш§ ЩҲШ§ШұШҜ Ъ©ЩҶЫҢШҜ
+    const WORKER_URL = "";
     
     // ========== State ==========
     const state = {
@@ -857,12 +1006,42 @@
       output.innerHTML = "<div class='spinner' style='width: 20px; height: 20px; border-width: 2px;'></div> در حال بهبود پرامپت...";
       
       try {
-        const res = await fetch(`${WORKER_URL}/api/enhance`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt }),
-        });
-        const data = await res.json();
+        let data;
+        
+        if (DIRECT_API && MISTRAL_KEY !== "your_mistral_key_here") {
+          // اتصال مستقیم به Mistral API
+          const res = await fetch("https://api.mistral.ai/v1/chat/completions", {
+            method: "POST",
+            headers: { 
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${MISTRAL_KEY}`
+            },
+            body: JSON.stringify({
+              model: "mistral-small-latest",
+              messages: [{
+                role: "system",
+                content: "You are a professional prompt engineer for AI image generation. Enhance the user's prompt to be more detailed, vivid, and suitable for FLUX models. Keep it in the same language as the input."
+              }, {
+                role: "user",
+                content: `Enhance this image generation prompt: ${prompt}`
+              }]
+            })
+          });
+          
+          if (!res.ok) throw new Error(`Mistral API error: ${res.status}`);
+          const result = await res.json();
+          data = { enhanced: result.choices[0].message.content };
+        } else if (WORKER_URL) {
+          // استفاده از Worker
+          const res = await fetch(`${WORKER_URL}/api/enhance`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt }),
+          });
+          data = await res.json();
+        } else {
+          throw new Error("Worker URL یا Mistral Key تنظیم نشده است");
+        }
         
         output.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: start; gap: 10px;">
@@ -873,7 +1052,7 @@
         output.dataset.enhanced = data.enhanced;
       } catch (err) {
         output.innerHTML = "❌ خطا در بهبود پرامپت";
-        showToast("خطا در ارتباط با Mistral", "error");
+        showToast("خطا در ارتباط با Mistral: " + err.message, "error");
       }
     }
 
@@ -885,6 +1064,16 @@
 
     // ========== API Calls ==========
     async function submitTask(endpoint, payload) {
+      // اگر DIRECT_API فعال باشد و کلید FAL تنظیم شده باشد، مستقیم به FAL.AI وصل می‌شویم
+      if (DIRECT_API && FAL_KEY !== "fal_your_api_key_here") {
+        return await submitDirectFAL(endpoint, payload);
+      }
+      
+      // در غیر این صورت از Worker استفاده می‌کنیم
+      if (!WORKER_URL) {
+        throw new Error("Worker URL یا FAL Key تنظیم نشده است. لطفاً Config را بررسی کنید.");
+      }
+      
       const res = await fetch(`${WORKER_URL}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -893,24 +1082,88 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.json();
     }
+    
+    // تابع اتصال مستقیم به FAL.AI
+    async function submitDirectFAL(endpoint, payload) {
+      // نگاشت endpointهای داخلی به endpointهای FAL
+      const falEndpoints = {
+        "flux-2-pro-preview": "fal-ai/flux-2-pro",
+        "flux-2-max": "fal-ai/flux-2-max",
+        "flux-2-pro": "fal-ai/flux-2-pro",
+        "flux-2-flex": "fal-ai/flux-2-flex",
+        "flux-2-klein-9b-preview": "fal-ai/flux-2-klein-9b",
+        "flux-pro-1.1-ultra": "fal-ai/flux-pro-1.1-ultra",
+        "flux-kontext-max": "fal-ai/flux-kontext-max",
+        "flux-kontext-pro": "fal-ai/flux-kontext-pro",
+        "outpaint": "fal-ai/outpaint",
+        "erase": "fal-ai/erase",
+        "deblur": "fal-ai/deblur",
+        "virtual-try-on-v2": "fal-ai/virtual-try-on-v2",
+      };
+      
+      const falEndpoint = falEndpoints[endpoint];
+      if (!falEndpoint) {
+        throw new Error(`Endpoint نامعتبر: ${endpoint}`);
+      }
+      
+      // آماده‌سازی payload برای FAL
+      let falPayload = { ...payload };
+      
+      // تبدیل image از base64 به URL اگر لازم باشد
+      if (falPayload.image && falPayload.image.startsWith('data:image')) {
+        // برای FAL باید image را آپلود کنیم یا از URL استفاده کنیم
+        // در اینجا فرض می‌کنیم base64 مستقیم کار می‌کند
+        falPayload.image_url = falPayload.image;
+        delete falPayload.image;
+      }
+      
+      const res = await fetch(`https://queue.fal.run/${falEndpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Key ${FAL_KEY}`
+        },
+        body: JSON.stringify(falPayload)
+      });
+      
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`FAL API error (${res.status}): ${errorText}`);
+      }
+      
+      const data = await res.json();
+      
+      // FAL معمولاً request_id و polling_url برمی‌گرداند
+      return {
+        id: data.request_id || data.id,
+        polling_url: data.response_url || data.polling_url || `${falEndpoint}/requests/${data.request_id}/status`
+      };
+    }
 
     async function pollResult(pollingUrl, resultElementId, addToGalleryFlag = false, prompt = "", type = "image") {
       const maxAttempts = 120; // 60 seconds max
       for (let i = 0; i < maxAttempts; i++) {
         await new Promise(r => setTimeout(r, 1000));
         
-        const res = await fetch(`${WORKER_URL}/api/poll?url=${encodeURIComponent(pollingUrl)}`);
+        // اگر pollingUrl کامل باشد (شامل domain)، مستقیم استفاده می‌کنیم
+        let url = pollingUrl;
+        if (!url.startsWith('http')) {
+          url = WORKER_URL ? `${WORKER_URL}${pollingUrl}` : `https://queue.fal.run${pollingUrl}`;
+        }
+        
+        const res = await fetch(url);
         const data = await res.json();
         
-        if (data.status === "Ready") {
-          const mediaUrl = data.result?.imageData || data.result?.sample;
+        if (data.status === "Ready" || data.status === "COMPLETED") {
+          const mediaUrl = data.result?.imageData || data.result?.sample || data.image?.url || data.images?.[0]?.url;
+          if (!mediaUrl) throw new Error("No image URL in response");
           renderResult(resultElementId, mediaUrl, type);
           if (addToGalleryFlag && type === "image") {
             addToGallery(mediaUrl, prompt);
           }
           showToast("تولید با موفقیت انجام شد! 🎉", "success");
           return data;
-        } else if (data.status === "Error" || data.status === "Failed") {
+        } else if (data.status === "Error" || data.status === "Failed" || data.status === "FAILED") {
           throw new Error("Generation failed: " + JSON.stringify(data));
         }
         
