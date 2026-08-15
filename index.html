@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SHΞN™ | FLUX Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #e0e5ec;
+      --bg-secondary: #d1d9e6;
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --accent: #667eea;
+      --accent-dark: #5568d3;
+      --success: #48bb78;
+      --warning: #ed8936;
+      --danger: #f56565;
+      --shadow-light: #ffffff;
+      --shadow-dark: #a3b1c6;
+      --neu-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+      --neu-shadow-sm: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+      --neu-shadow-pressed: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex-shrink: 0;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      box-shadow: var(--neu-shadow-sm);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .tab:hover {
+      transform: translateY(-2px);
+      color: var(--accent);
+    }
+
+    .tab.active {
+      box-shadow: var(--neu-shadow-pressed);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-primary);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--neu-shadow);
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title .icon {
+      font-size: 1.3rem;
+    }
+
+    /* Inputs */
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    textarea, input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 14px 16px;
+      border: none;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      box-shadow: var(--neu-shadow-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: var(--transition);
+      outline: none;
+      resize: vertical;
+    }
+
+    textarea:focus, input:focus, select:focus {
+      box-shadow: var(--neu-shadow-pressed);
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      box-shadow: var(--neu-shadow-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--neu-shadow);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: var(--neu-shadow-pressed);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-enhance {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      color: white;
+      box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+      font-size: 0.85rem;
+      padding: 10px 18px;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    /* Result Area */
+    .result-area {
+      min-height: 300px;
+      border-radius: 16px;
+      background: var(--bg-primary);
+      box-shadow: var(--neu-shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-area img, .result-area video {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .placeholder {
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    .placeholder .icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+
+    /* Status */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    .status.pending {
+      background: rgba(237, 137, 54, 0.1);
+      color: var(--warning);
+    }
+
+    .status.success {
+      background: rgba(72, 187, 120, 0.1);
+      color: var(--success);
+    }
+
+    .status.error {
+      background: rgba(245, 101, 101, 0.1);
+      color: var(--danger);
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--bg-secondary);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #764ba2);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* File Upload */
+    .file-upload {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      border: 2px dashed var(--shadow-dark);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-primary);
+    }
+
+    .file-upload:hover {
+      border-color: var(--accent);
+      background: var(--bg-secondary);
+    }
+
+    .file-upload input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-upload-preview {
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 12px;
+      margin-top: 12px;
+      box-shadow: var(--neu-shadow-sm);
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      animation: slideDown 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.success { border-right: 4px solid var(--success); }
+    .toast.error { border-right: 4px solid var(--danger); }
+    .toast.warning { border-right: 4px solid var(--warning); }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Section visibility */
+    .section { display: none; }
+    .section.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Download Button */
+    .btn-download {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.9);
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Enhanced Prompt Display */
+    .enhanced-box {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      box-shadow: inset var(--neu-shadow-sm);
+      display: none;
+    }
+
+    .enhanced-box.show { display: block; animation: fadeIn 0.3s ease; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .logo { font-size: 2rem; }
+      .card { padding: 18px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .btn-full { width: 100%; }
+      .btn-group { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+
+    /* Chip Select */
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--bg-primary);
+      box-shadow: var(--neu-shadow-sm);
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+      color: var(--text-secondary);
+    }
+
+    .chip:hover { color: var(--accent); }
+    .chip.active {
+      box-shadow: var(--neu-shadow-pressed);
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="logo">SHΞN™ Studio</h1>
+      <p class="subtitle">Professional AI Generation Platform powered by FLUX</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-section="generate">🎨 تولید تصویر</button>
+      <button class="tab" data-section="kontext">🎬 Kontext (Edit)</button>
+      <button class="tab" data-section="video">📹 ویدیو</button>
+      <button class="tab" data-section="tools">🛠️ ابزارها</button>
+      <button class="tab" data-section="gallery">🖼️ گالری</button>
+    </div>
+
+    <!-- Generate Section -->
+    <div id="generate" class="section active">
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">🎨</span>
+          Text to Image
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">انتخاب مدل</label>
+          <div class="chips" id="modelChips">
+            <button class="chip active" data-model="flux-2-pro-preview">FLUX.2 Pro Preview</button>
+            <button class="chip" data-model="flux-2-max">FLUX.2 Max</button>
+            <button class="chip" data-model="flux-2-pro">FLUX.2 Pro</button>
+            <button class="chip" data-model="flux-2-flex">FLUX.2 Flex</button>
+            <button class="chip" data-model="flux-2-klein-9b-preview">FLUX.2 Klein 9B</button>
+            <button class="chip" data-model="flux-pro-1.1-ultra">FLUX Pro 1.1 Ultra</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="input-label" style="margin: 0;">پرامپت</label>
+            <button class="btn btn-enhance" onclick="enhancePrompt('genPrompt', 'genEnhanced')">✨ هوش مصنوعی</button>
+          </div>
+          <textarea id="genPrompt" placeholder="یک گربه روی پاهای عقب ایستاده و در حال فرار از مغازه‌دار با ماهی بزرگ در دست..."></textarea>
+          <div id="genEnhanced" class="enhanced-box"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="input-group">
+            <label class="input-label">عرض (px)</label>
+            <input type="number" id="genWidth" value="1024" min="256" max="2048" step="64">
+          </div>
+          <div class="input-group">
+            <label class="input-label">ارتفاع (px)</label>
+            <input type="number" id="genHeight" value="1024" min="256" max="2048" step="64">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="input-group">
+            <label class="input-label">Seed (اختیاری)</label>
+            <input type="number" id="genSeed" placeholder="خالی برای رندوم">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Steps</label>
+            <input type="number" id="genSteps" value="30" min="1" max="100">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="submitGeneration()">🚀 تولید تصویر</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">🖼️</span> نتیجه</div>
+        <div class="result-area" id="genResult">
+          <div class="placeholder">
+            <div class="icon">🎨</div>
+            <p>تصویر تولید شده اینجا نمایش داده می‌شود</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontext Section -->
+    <div id="kontext" class="section">
+      <div class="card">
+        <div class="card-title"><span class="icon">🎬</span> Kontext (Image Edit)</div>
+
+        <div class="input-group">
+          <label class="input-label">انتخاب مدل</label>
+          <div class="chips" id="kontextChips">
+            <button class="chip active" data-model="flux-kontext-max">Kontext Max</button>
+            <button class="chip" data-model="flux-kontext-pro">Kontext Pro</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">تصویر ورودی</label>
+          <div class="file-upload">
+            <input type="file" id="kontextImage" accept="image/*" onchange="previewImage(this, 'kontextPreview')">
+            <p>📁 کلیک کنید یا فایل را اینجا رها کنید</p>
+          </div>
+          <img id="kontextPreview" class="file-upload-preview" style="display:none;">
+        </div>
+
+        <div class="input-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="input-label" style="margin: 0;">دستورات ویرایش</label>
+            <button class="btn btn-enhance" onclick="enhancePrompt('kontextPrompt', 'kontextEnhanced')">✨ هوش مصنوعی</button>
+          </div>
+          <textarea id="kontextPrompt" placeholder="مثلاً: رنگ پس‌زمینه را آبی کن، یک کلاه روی سر شخصیت اضافه کن..."></textarea>
+          <div id="kontextEnhanced" class="enhanced-box"></div>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="submitKontext()">🎬 ویرایش تصویر</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">🖼️</span> نتیجه</div>
+        <div class="result-area" id="kontextResult">
+          <div class="placeholder">
+            <div class="icon">🎬</div>
+            <p>نتیجه ویرایش اینجا نمایش داده می‌شود</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Section -->
+    <div id="video" class="section">
+      <div class="card">
+        <div class="card-title"><span class="icon">📹</span> تولید ویدیو</div>
+
+        <div class="input-group">
+          <label class="input-label">فریم اول (اختیاری)</label>
+          <div class="file-upload">
+            <input type="file" id="videoFirstFrame" accept="image/*" onchange="previewImage(this, 'videoFirstPreview')">
+            <p>📁 تصویر فریم اول</p>
+          </div>
+          <img id="videoFirstPreview" class="file-upload-preview" style="display:none;">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">فریم آخر (اختیاری)</label>
+          <div class="file-upload">
+            <input type="file" id="videoLastFrame" accept="image/*" onchange="previewImage(this, 'videoLastPreview')">
+            <p>📁 تصویر فریم آخر</p>
+          </div>
+          <img id="videoLastPreview" class="file-upload-preview" style="display:none;">
+        </div>
+
+        <div class="input-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="input-label" style="margin: 0;">پرامپت ویدیو</label>
+            <button class="btn btn-enhance" onclick="enhancePrompt('videoPrompt', 'videoEnhanced')">✨ هوش مصنوعی</button>
+          </div>
+          <textarea id="videoPrompt" placeholder="یک گربه که از روی میز می‌پرد و روی زمین فرود می‌آید..."></textarea>
+          <div id="videoEnhanced" class="enhanced-box"></div>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="submitVideo()">📹 تولید ویدیو</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">🎞️</span> نتیجه</div>
+        <div class="result-area" id="videoResult">
+          <div class="placeholder">
+            <div class="icon">📹</div>
+            <p>ویدیو تولید شده اینجا نمایش داده می‌شود</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools Section -->
+    <div id="tools" class="section">
+      <div class="card">
+        <div class="card-title"><span class="icon">🛠️</span> ابزارهای پیشرفته</div>
+
+        <div class="input-group">
+          <label class="input-label">انتخاب ابزار</label>
+          <div class="chips" id="toolChips">
+            <button class="chip active" data-tool="outpaint">Outpaint</button>
+            <button class="chip" data-tool="erase">Erase</button>
+            <button class="chip" data-tool="deblur">Deblur</button>
+            <button class="chip" data-tool="tryon">Virtual Try-on</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">تصویر ورودی</label>
+          <div class="file-upload">
+            <input type="file" id="toolImage" accept="image/*" onchange="previewImage(this, 'toolPreview')">
+            <p>📁 تصویر را انتخاب کنید</p>
+          </div>
+          <img id="toolPreview" class="file-upload-preview" style="display:none;">
+        </div>
+
+        <div class="input-group" id="toolMaskGroup" style="display:none;">
+          <label class="input-label">ماسک (برای Erase)</label>
+          <div class="file-upload">
+            <input type="file" id="toolMask" accept="image/*" onchange="previewImage(this, 'toolMaskPreview')">
+            <p>📁 تصویر ماسک</p>
+          </div>
+          <img id="toolMaskPreview" class="file-upload-preview" style="display:none;">
+        </div>
+
+        <div class="input-group" id="toolPromptGroup">
+          <label class="input-label">دستورات (اختیاری)</label>
+          <textarea id="toolPrompt" placeholder="توضیحات برای Outpaint یا Try-on..."></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="submitTool()">🛠️ اجرا</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">🖼️</span> نتیجه</div>
+        <div class="result-area" id="toolResult">
+          <div class="placeholder">
+            <div class="icon">🛠️</div>
+            <p>نتیجه ابزار اینجا نمایش داده می‌شود</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="section">
+      <div class="card">
+        <div class="card-title"><span class="icon">🖼️</span> گالری تولیدات</div>
+        <div class="grid-3" id="galleryGrid">
+          <div class="placeholder" style="grid-column: 1/-1;">
+            <div class="icon">🖼️</div>
+            <p>هنوز تصویری تولید نشده است</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href="https://shen.dev" target="_blank">Exclusive SHΞN™ made</a>
+      <p style="margin-top: 8px; font-size: 0.8rem;">Powered by FLUX API & Mistral AI</p>
+    </footer>
+  </div>
+
+  <script>
+    // ========== Config ==========
+    const WORKER_URL = ""; // URL Worker خود را اینجا وارد کنید (مثلاً: https://your-worker.workers.dev)
+    
+    // ========== State ==========
+    const state = {
+      selectedModel: "flux-2-pro-preview",
+      selectedKontext: "flux-kontext-max",
+      selectedTool: "outpaint",
+      gallery: JSON.parse(localStorage.getItem("shen_gallery") || "[]"),
+      uploadedImages: {},
+    };
+
+    // ========== Utility Functions ==========
+    function showToast(message, type = "success") {
+      const container = document.getElementById("toastContainer");
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `<span>${type === 'success' ? '✅' : type === 'error' ? '❌' : '⚠️'}</span> ${message}`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    function showStatus(elementId, message, type = "pending") {
+      const el = document.getElementById(elementId);
+      const statusEl = el.querySelector(".status");
+      if (statusEl) {
+        statusEl.className = `status ${type}`;
+        statusEl.textContent = message;
+      }
+    }
+
+    function showLoading(elementId) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = `
+        <div style="text-align: center;">
+          <div class="spinner"></div>
+          <div class="status pending" style="margin-top: 16px;">در حال تولید... لطفاً صبر کنید</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 30%"></div></div>
+        </div>
+      `;
+    }
+
+    function renderResult(elementId, imageUrl, type = "image") {
+      const el = document.getElementById(elementId);
+      if (type === "video") {
+        el.innerHTML = `
+          <video controls autoplay loop style="max-width: 100%; border-radius: 12px;">
+            <source src="${imageUrl}" type="video/mp4">
+          </video>
+        `;
+      } else {
+        el.innerHTML = `
+          <img src="${imageUrl}" alt="Generated">
+          <button class="btn btn-download" onclick="downloadImage('${imageUrl}')">⬇️ دانلود</button>
+        `;
+      }
+    }
+
+    function downloadImage(dataUrl) {
+      const link = document.createElement("a");
+      link.download = `shen_${Date.now()}.jpg`;
+      link.href = dataUrl;
+      link.click();
+    }
+
+    function addToGallery(imageUrl, prompt) {
+      state.gallery.unshift({ url: imageUrl, prompt, date: new Date().toISOString() });
+      if (state.gallery.length > 20) state.gallery = state.gallery.slice(0, 20);
+      localStorage.setItem("shen_gallery", JSON.stringify(state.gallery));
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById("galleryGrid");
+      if (state.gallery.length === 0) {
+        grid.innerHTML = `<div class="placeholder" style="grid-column: 1/-1;">
+          <div class="icon">🖼️</div>
+          <p>هنوز تصویری تولید نشده است</p>
+        </div>`;
+        return;
+      }
+      grid.innerHTML = state.gallery.map((item, i) => `
+        <div style="cursor: pointer;" onclick="viewGalleryItem(${i})">
+          <img src="${item.url}" style="width: 100%; border-radius: 12px; box-shadow: var(--neu-shadow-sm);">
+        </div>
+      `).join("");
+    }
+
+    function viewGalleryItem(index) {
+      const item = state.gallery[index];
+      document.getElementById("genResult").innerHTML = `
+        <img src="${item.url}" alt="Generated">
+        <button class="btn btn-download" onclick="downloadImage('${item.url}')">⬇️ دانلود</button>
+      `;
+      switchTab("generate");
+    }
+
+    // ========== Preview Image ==========
+    function previewImage(input, previewId) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const preview = document.getElementById(previewId);
+        preview.src = e.target.result;
+        preview.style.display = "block";
+        state.uploadedImages[input.id] = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ========== Enhance Prompt ==========
+    async function enhancePrompt(inputId, outputId) {
+      const prompt = document.getElementById(inputId).value.trim();
+      if (!prompt) {
+        showToast("لطفاً ابتدا یک پرامپت وارد کنید", "warning");
+        return;
+      }
+      
+      const output = document.getElementById(outputId);
+      output.className = "enhanced-box show";
+      output.innerHTML = "<div class='spinner' style='width: 20px; height: 20px; border-width: 2px;'></div> در حال بهبود پرامپت...";
+      
+      try {
+        const res = await fetch(`${WORKER_URL}/api/enhance`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt }),
+        });
+        const data = await res.json();
+        
+        output.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: start; gap: 10px;">
+            <div style="flex: 1;">${data.enhanced}</div>
+            <button class="btn" style="padding: 6px 12px; font-size: 0.8rem;" onclick="applyEnhanced('${inputId}', '${outputId}')">اعمال</button>
+          </div>
+        `;
+        output.dataset.enhanced = data.enhanced;
+      } catch (err) {
+        output.innerHTML = "❌ خطا در بهبود پرامپت";
+        showToast("خطا در ارتباط با Mistral", "error");
+      }
+    }
+
+    function applyEnhanced(inputId, outputId) {
+      const enhanced = document.getElementById(outputId).dataset.enhanced;
+      document.getElementById(inputId).value = enhanced;
+      showToast("پرامپت اعمال شد", "success");
+    }
+
+    // ========== API Calls ==========
+    async function submitTask(endpoint, payload) {
+      const res = await fetch(`${WORKER_URL}/api/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ endpoint, payload }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+
+    async function pollResult(pollingUrl, resultElementId, addToGalleryFlag = false, prompt = "", type = "image") {
+      const maxAttempts = 120; // 60 seconds max
+      for (let i = 0; i < maxAttempts; i++) {
+        await new Promise(r => setTimeout(r, 1000));
+        
+        const res = await fetch(`${WORKER_URL}/api/poll?url=${encodeURIComponent(pollingUrl)}`);
+        const data = await res.json();
+        
+        if (data.status === "Ready") {
+          const mediaUrl = data.result?.imageData || data.result?.sample;
+          renderResult(resultElementId, mediaUrl, type);
+          if (addToGalleryFlag && type === "image") {
+            addToGallery(mediaUrl, prompt);
+          }
+          showToast("تولید با موفقیت انجام شد! 🎉", "success");
+          return data;
+        } else if (data.status === "Error" || data.status === "Failed") {
+          throw new Error("Generation failed: " + JSON.stringify(data));
+        }
+        
+        // Update progress if available
+        if (data.progress !== undefined) {
+          const progressEl = document.querySelector(`#${resultElementId} .progress-fill`);
+          if (progressEl) progressEl.style.width = `${data.progress}%`;
+        }
+      }
+      throw new Error("Timeout: تولید بیش از حد طول کشید");
+    }
+
+    // ========== Submit Functions ==========
+    async function submitGeneration() {
+      const prompt = document.getElementById("genPrompt").value.trim();
+      if (!prompt) {
+        showToast("لطفاً یک پرامپت وارد کنید", "warning");
+        return;
+      }
+      
+      const width = parseInt(document.getElementById("genWidth").value);
+      const height = parseInt(document.getElementById("genHeight").value);
+      const seed = document.getElementById("genSeed").value;
+      const steps = parseInt(document.getElementById("genSteps").value);
+      
+      const payload = {
+        prompt,
+        width,
+        height,
+        steps: steps || 30,
+        prompt_upsampling: true,
+      };
+      if (seed) payload.seed = parseInt(seed);
+      
+      showLoading("genResult");
+      
+      try {
+        const data = await submitTask(state.selectedModel, payload);
+        if (data.id) {
+          await pollResult(data.polling_url, "genResult", true, prompt);
+        } else {
+          throw new Error(data.error || "Invalid response");
+        }
+      } catch (err) {
+        showToast(err.message, "error");
+        document.getElementById("genResult").innerHTML = `<div class="placeholder"><div class="icon">❌</div><p>${err.message}</p></div>`;
+      }
+    }
+
+    async function submitKontext() {
+      const prompt = document.getElementById("kontextPrompt").value.trim();
+      const image = state.uploadedImages["kontextImage"];
+      
+      if (!prompt) { showToast("لطفاً دستورات ویرایش را وارد کنید", "warning"); return; }
+      if (!image) { showToast("لطفاً یک تصویر انتخاب کنید", "warning"); return; }
+      
+      const payload = {
+        prompt,
+        image: image,
+      };
+      
+      showLoading("kontextResult");
+      
+      try {
+        const data = await submitTask(state.selectedKontext, payload);
+        if (data.id) {
+          await pollResult(data.polling_url, "kontextResult", true, prompt);
+        } else {
+          throw new Error(data.error || "Invalid response");
+        }
+      } catch (err) {
+        showToast(err.message, "error");
+        document.getElementById("kontextResult").innerHTML = `<div class="placeholder"><div class="icon">❌</div><p>${err.message}</p></div>`;
+      }
+    }
+
+    async function submitVideo() {
+      const prompt = document.getElementById("videoPrompt").value.trim();
+      if (!prompt) { showToast("لطفاً یک پرامپت وارد کنید", "warning"); return; }
+      
+      const payload = { prompt };
+      const first = state.uploadedImages["videoFirstFrame"];
+      const last = state.uploadedImages["videoLastFrame"];
+      
+      if (first) payload.first_frame_image = first;
+      if (last) payload.last_frame_image = last;
+      
+      showLoading("videoResult");
+      
+      try {
+        // برای ویدیو از kontext-max یا مدل‌های ویدیویی استفاده می‌کنیم
+        const endpoint = "flux-kontext-max"; // یا مدل ویدیویی خاص
+        const data = await submitTask(endpoint, payload);
+        if (data.id) {
+          await pollResult(data.polling_url, "videoResult", false, prompt, "video");
+        } else {
+          throw new Error(data.error || "Invalid response");
+        }
+      } catch (err) {
+        showToast(err.message, "error");
+        document.getElementById("videoResult").innerHTML = `<div class="placeholder"><div class="icon">❌</div><p>${err.message}</p></div>`;
+      }
+    }
+
+    async function submitTool() {
+      const image = state.uploadedImages["toolImage"];
+      if (!image) { showToast("لطفاً یک تصویر انتخاب کنید", "warning"); return; }
+      
+      const prompt = document.getElementById("toolPrompt").value.trim();
+      const mask = state.uploadedImages["toolMask"];
+      
+      const endpoints = {
+        outpaint: "outpaint",
+        erase: "erase",
+        deblur: "deblur",
+        tryon: "virtual-try-on-v2",
+      };
+      
+      const payload = { image };
+      if (prompt) payload.prompt = prompt;
+      if (mask && state.selectedTool === "erase") payload.mask = mask;
+      
+      showLoading("toolResult");
+      
+      try {
+        const data = await submitTask(endpoints[state.selectedTool], payload);
+        if (data.id) {
+          await pollResult(data.polling_url, "toolResult", true, prompt || state.selectedTool);
+        } else {
+          throw new Error(data.error || "Invalid response");
+        }
+      } catch (err) {
+        showToast(err.message, "error");
+        document.getElementById("toolResult").innerHTML = `<div class="placeholder"><div class="icon">❌</div><p>${err.message}</p></div>`;
+      }
+    }
+
+    // ========== Tab Navigation ==========
+    function switchTab(sectionId) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+      document.querySelector(`[data-section="${sectionId}"]`).classList.add("active");
+      document.getElementById(sectionId).classList.add("active");
+    }
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => switchTab(tab.dataset.section));
+    });
+
+    // ========== Chip Selection ==========
+    function setupChips(containerId, stateKey) {
+      document.querySelectorAll(`#${containerId} .chip`).forEach(chip => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll(`#${containerId} .chip`).forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          state[stateKey] = chip.dataset.model || chip.dataset.tool;
+        });
+      });
+    }
+
+    setupChips("modelChips", "selectedModel");
+    setupChips("kontextChips", "selectedKontext");
+    setupChips("toolChips", "selectedTool");
+
+    // ========== Tool-specific UI ==========
+    document.querySelectorAll("#toolChips .chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        const tool = chip.dataset.tool;
+        const maskGroup = document.getElementById("toolMaskGroup");
+        const promptGroup = document.getElementById("toolPromptGroup");
+        
+        maskGroup.style.display = tool === "erase" ? "block" : "none";
+        promptGroup.style.display = (tool === "deblur" || tool === "tryon") ? "none" : "block";
+      });
+    });
+
+    // ========== Init ==========
+    renderGallery();
+  </script>
+</body>
+</html>
